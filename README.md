@@ -1,4 +1,4 @@
-# CDFormer: A Hyperspectral Image Change Detection Method Based on Transformer Encoders --IEEE Geoscience and Remote Sensing Letters
+# Multilevel Features Fused and Change Information Enhanced Neural Network for Hyperspectral Image Change Detection--IEEE Transactions on Geoscience and Remote Sensing
 
 Code for the paper "[Multilevel Features Fused and Change Information Enhanced Neural Network for Hyperspectral Image Change Detection](https://ieeexplore.ieee.org/abstract/document/10366286)".  More specifically, it is detailed as follow. 
 
