@@ -281,7 +281,7 @@ class BandWiseFusion(nn.Module):
 
 # 定义CNN骨干网络
 class Backbone(nn.Module):
-    def __init__(self, band_size, dim):
+    def __init__(self, patch_size, band_size, dim):
         super(Backbone, self).__init__()
         self.in_channels = 64
 
@@ -313,10 +313,10 @@ class Backbone(nn.Module):
         self.cross_attn4 = AugmentedConv(in_channels = 128, kernel_size = 3, dk = 128, dv = 128, Nh = 4)
         # TODO 特征嵌入是每个scale用一个还是尽量用一个（分组卷积能克服通道数问题）
         # 构建特征嵌入模块
-        self.feat_embed1 = nn.Conv2d(64, dim, kernel_size = 3, groups = 64)
-        self.feat_embed2 = nn.Conv2d(64, dim, kernel_size = 3, groups = 64)
-        self.feat_embed3 = nn.Conv2d(128, dim, kernel_size = 3, groups = 64)
-        self.feat_embed4 = nn.Conv2d(128, dim, kernel_size = 3, groups = 64)
+        self.feat_embed1 = nn.Conv2d(64, dim, kernel_size = patch_size, groups = 64)
+        self.feat_embed2 = nn.Conv2d(64, dim, kernel_size = patch_size, groups = 64)
+        self.feat_embed3 = nn.Conv2d(128, dim, kernel_size = patch_size, groups = 64)
+        self.feat_embed4 = nn.Conv2d(128, dim, kernel_size = patch_size, groups = 64)
 
         # self.layer2 = self._make_layer(BasicBlock, 128, 2, stride = 2)
         # self.layer3 = self._make_layer(BasicBlock, 256, 2, stride = 2)

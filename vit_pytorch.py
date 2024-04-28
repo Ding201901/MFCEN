@@ -172,8 +172,8 @@ class ViT(nn.Module):
         super().__init__()
 
         self.pos_embedding = nn.Parameter(torch.randn(1, num_feats + 1, dim))
-        self.cnn_backbone = Backbone(band_size = band_size, dim = dim)  # Siamese network
-        self.cnn_backbone1 = Backbone(band_size = band_size, dim = dim)  # Siamese network
+        self.cnn_backbone = Backbone(patch_size, band_size = band_size, dim = dim)  # Siamese network
+        self.cnn_backbone1 = Backbone(patch_size, band_size = band_size, dim = dim)  # Siamese network
         self.scale_fuse = ScaleFeatFuse(dim, heads, dim_head, dropout)
 
         self.cls_token = nn.Parameter(torch.randn(1, 1, dim))
